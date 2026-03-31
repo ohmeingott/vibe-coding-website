@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brutal-yellow: #FFE600;
+  --color-brutal-pink: #FF6B9D;
+  --color-brutal-blue: #4ECDC4;
+  --color-brutal-purple: #C44CFF;
+  --color-brutal-orange: #FF8C42;
+  --color-brutal-green: #A8E6CF;
+  --color-brutal-red: #FF4057;
+  --color-brutal-black: #1A1A2E;
+  --color-brutal-white: #FFFDF7;
+
+  --font-heading: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-brutal-white);
+  color: var(--color-brutal-black);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Neo-brutalism utilities */
+.brutal-border {
+  border: 3px solid var(--color-brutal-black);
+}
+
+.brutal-shadow {
+  box-shadow: 4px 4px 0px var(--color-brutal-black);
+}
+
+.brutal-shadow-lg {
+  box-shadow: 6px 6px 0px var(--color-brutal-black);
+}
+
+.brutal-hover {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.brutal-hover:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--color-brutal-black);
+}
+
+.brutal-hover:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0px var(--color-brutal-black);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-brutal-white);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-brutal-black);
+  border: 2px solid var(--color-brutal-white);
+}
