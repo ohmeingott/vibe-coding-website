@@ -5,7 +5,6 @@ import { WizardState, initialState, buildPrompt } from "@/lib/prompt-builder";
 import { RoleStep } from "./steps/RoleStep";
 import { ProjectTypeStep } from "./steps/ProjectTypeStep";
 import { IdeaStep } from "./steps/IdeaStep";
-import { CapabilitiesStep } from "./steps/CapabilitiesStep";
 import { VibesStep } from "./steps/VibesStep";
 import { PromptOutput } from "./PromptOutput";
 import { BrutalButton } from "@/components/ui/BrutalButton";
@@ -14,7 +13,6 @@ const STEP_LABELS = [
   "Who Are You",
   "Your Idea",
   "What to Build",
-  "Features",
   "Look & Feel",
   "Your Prompt",
 ];
@@ -78,9 +76,8 @@ export function WizardContainer() {
         {step === 0 && <RoleStep state={state} setState={setState} />}
         {step === 1 && <IdeaStep state={state} setState={setState} />}
         {step === 2 && <ProjectTypeStep state={state} setState={setState} />}
-        {step === 3 && <CapabilitiesStep state={state} setState={setState} />}
-        {step === 4 && <VibesStep state={state} setState={setState} />}
-        {step === 5 && <PromptOutput prompt={buildPrompt(state)} onReset={reset} />}
+        {step === 3 && <VibesStep state={state} setState={setState} />}
+        {step === 4 && <PromptOutput prompt={buildPrompt(state)} onReset={reset} />}
       </div>
 
       {/* Navigation */}

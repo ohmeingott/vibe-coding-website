@@ -1,4 +1,4 @@
-import { projectTypes, capabilities, vibes, roles } from "@/data/wizard-options";
+import { projectTypes, vibes, roles } from "@/data/wizard-options";
 
 export interface WizardState {
   role: string | null;
@@ -31,10 +31,6 @@ export function buildPrompt(state: WizardState): string {
     ? findLabel(state.role, roles)
     : "someone new to coding";
 
-  const allCapabilities = state.projectType
-    ? capabilities[state.projectType] || []
-    : [];
-
   // Role & context
   let prompt = `## Who I am\nI'm ${roleLabel === "Developer" ? "a developer" : roleLabel === "Complete Beginner" ? "a complete beginner with no coding experience" : `a ${roleLabel.toLowerCase()}`}. `;
 
@@ -59,16 +55,6 @@ export function buildPrompt(state: WizardState): string {
 
   // This is a new project
   prompt += `## Context\nThis is a brand new project. Start from scratch with a clean folder. Choose a sensible tech stack for this kind of project and explain why you chose it.\n\n`;
-
-  // Capabilities
-  if (state.capabilities.length > 0) {
-    prompt += `## Features & Capabilities\n`;
-    state.capabilities.forEach((id) => {
-      const label = findLabel(id, allCapabilities);
-      prompt += `- ${label}\n`;
-    });
-    prompt += `\n`;
-  }
 
   // Vibe
   if (state.vibe.length > 0) {
