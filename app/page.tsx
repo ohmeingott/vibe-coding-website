@@ -17,6 +17,13 @@ const sections = [
     icon: "🧙",
   },
   {
+    href: "/record",
+    title: "Recording",
+    description: "Watch the full workshop recording",
+    color: "green" as const,
+    icon: "🎬",
+  },
+  {
     href: "/cheat-sheet",
     title: "Cheat Sheet",
     description: "Quick reference for commands, shortcuts, and tips",

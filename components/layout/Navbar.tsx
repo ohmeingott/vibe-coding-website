@@ -10,7 +10,8 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/slides", label: "Slides" },
   { href: "/prompt-wizard", label: "Prompt Wizard" },
-{ href: "/cheat-sheet", label: "Cheat Sheet" },
+  { href: "/record", label: "Record" },
+  { href: "/cheat-sheet", label: "Cheat Sheet" },
   { href: "/best-practices", label: "Best Practices" },
 ];
 
