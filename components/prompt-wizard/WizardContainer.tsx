@@ -1,45 +1,48 @@
 "use client";
 
 import { useState } from "react";
-import { WizardState, initialWizardState, buildPrompt } from "@/lib/prompt-builder";
+import { WizardState, initialState, buildPrompt } from "@/lib/prompt-builder";
+import { RoleStep } from "./steps/RoleStep";
 import { ProjectTypeStep } from "./steps/ProjectTypeStep";
-import { TechStackStep } from "./steps/TechStackStep";
-import { FeaturesStep } from "./steps/FeaturesStep";
-import { ConstraintsStep } from "./steps/ConstraintsStep";
-import { StyleStep } from "./steps/StyleStep";
+import { IdeaStep } from "./steps/IdeaStep";
+import { CapabilitiesStep } from "./steps/CapabilitiesStep";
+import { VibesStep } from "./steps/VibesStep";
 import { PromptOutput } from "./PromptOutput";
 import { BrutalButton } from "@/components/ui/BrutalButton";
 
 const STEP_LABELS = [
-  "Project Type",
-  "Tech Stack",
+  "Who Are You",
+  "Your Idea",
+  "What to Build",
   "Features",
-  "Constraints",
-  "Code Style",
+  "Look & Feel",
   "Your Prompt",
 ];
 
 export function WizardContainer() {
   const [step, setStep] = useState(0);
-  const [state, setState] = useState<WizardState>(initialWizardState);
+  const [state, setState] = useState<WizardState>(initialState);
 
   const totalSteps = STEP_LABELS.length;
+  const lastStep = totalSteps - 1;
 
   const canProceed = () => {
     switch (step) {
       case 0:
-        return state.projectType !== null;
+        return state.role !== null;
       case 1:
-        return state.techStack.length > 0;
+        return true; // idea is optional but encouraged
+      case 2:
+        return state.projectType !== null;
       default:
         return true;
     }
   };
 
-  const goNext = () => setStep((s) => Math.min(s + 1, totalSteps - 1));
+  const goNext = () => setStep((s) => Math.min(s + 1, lastStep));
   const goPrev = () => setStep((s) => Math.max(s - 1, 0));
   const reset = () => {
-    setState(initialWizardState);
+    setState(initialState);
     setStep(0);
   };
 
@@ -72,16 +75,16 @@ export function WizardContainer() {
 
       {/* Step content */}
       <div className="min-h-[400px]">
-        {step === 0 && <ProjectTypeStep state={state} setState={setState} />}
-        {step === 1 && <TechStackStep state={state} setState={setState} />}
-        {step === 2 && <FeaturesStep state={state} setState={setState} />}
-        {step === 3 && <ConstraintsStep state={state} setState={setState} />}
-        {step === 4 && <StyleStep state={state} setState={setState} />}
+        {step === 0 && <RoleStep state={state} setState={setState} />}
+        {step === 1 && <IdeaStep state={state} setState={setState} />}
+        {step === 2 && <ProjectTypeStep state={state} setState={setState} />}
+        {step === 3 && <CapabilitiesStep state={state} setState={setState} />}
+        {step === 4 && <VibesStep state={state} setState={setState} />}
         {step === 5 && <PromptOutput prompt={buildPrompt(state)} onReset={reset} />}
       </div>
 
       {/* Navigation */}
-      {step < 5 && (
+      {step < lastStep && (
         <div className="flex justify-between mt-8">
           <BrutalButton
             variant="secondary"
@@ -92,7 +95,7 @@ export function WizardContainer() {
             ← Back
           </BrutalButton>
           <BrutalButton onClick={goNext} disabled={!canProceed()} className="disabled:opacity-30">
-            {step === 4 ? "Generate Prompt →" : "Next →"}
+            {step === lastStep - 1 ? "Generate Prompt →" : "Next →"}
           </BrutalButton>
         </div>
       )}

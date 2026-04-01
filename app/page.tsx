@@ -5,7 +5,7 @@ const sections = [
   {
     href: "/slides",
     title: "Workshop Slides",
-    description: "Step through the vibecoding workshop presentation",
+    description: "Step through the Vibe Coding workshop presentation",
     color: "pink" as const,
     icon: "📺",
   },
@@ -15,13 +15,6 @@ const sections = [
     description: "Generate the perfect prompt to start your project with Claude Code",
     color: "blue" as const,
     icon: "🧙",
-  },
-  {
-    href: "/setup",
-    title: "Setup Guide",
-    description: "Get Claude Code installed and configured on your machine",
-    color: "green" as const,
-    icon: "🔧",
   },
   {
     href: "/cheat-sheet",
@@ -46,7 +39,7 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-4 py-16 md:py-24">
         <div className="text-center mb-16">
           <h1 className="font-heading text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            VIBECODING
+            VIBE CODING
             <br />
             <span className="inline-block bg-brutal-pink px-4 py-1 brutal-border brutal-shadow mt-2">
               WORKSHOP

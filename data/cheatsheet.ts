@@ -27,7 +27,7 @@ export const cheatsheetData: CheatSheetCategory[] = [
       { command: "/help", description: "Show available commands and help" },
       { command: "/clear", description: "Clear the conversation history" },
       { command: "/compact", description: "Compress the conversation to save context" },
-      { command: "/review", description: "Review code changes Claude has made" },
+      { command: "/review", description: "See a summary of what Claude changed" },
       { command: "/cost", description: "Show token usage and estimated cost" },
       { command: "/model", description: "Switch the active model" },
     ],
@@ -67,7 +67,7 @@ export const cheatsheetData: CheatSheetCategory[] = [
     title: "Workflow Patterns",
     color: "orange",
     commands: [
-      { command: "\"Explain this code\"", description: "Understand unfamiliar code before modifying it" },
+      { command: "\"Explain what this does\"", description: "Let Claude explain any part of the project to you" },
       { command: "\"Fix the failing tests\"", description: "Let Claude read errors and fix the code" },
       { command: "\"Refactor X to use Y\"", description: "Guided refactoring with context" },
       { command: "\"Add tests for X\"", description: "Generate tests for existing code" },

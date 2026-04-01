@@ -82,7 +82,7 @@ export function Slide({ data, isActive, isLeaving, visible, direction }: SlidePr
   return (
     <div
       className={cn(
-        "absolute inset-0 flex items-center justify-center p-8 md:p-16 overflow-hidden",
+        "absolute inset-0 flex items-center justify-center p-8 pb-24 md:p-16 md:pb-28 overflow-hidden",
         data.bgColor,
         !visible && "pointer-events-none"
       )}
@@ -458,7 +458,7 @@ function EvolutionLayout({
               {/* Step card */}
               <div
                 className={cn(
-                  "flex-1 brutal-border p-3 md:p-4 transition-all duration-300",
+                  "flex-1 brutal-border p-2 md:p-3 transition-all duration-300",
                   step.highlight
                     ? "bg-brutal-black text-brutal-yellow brutal-shadow-lg"
                     : "bg-white/30"
@@ -481,8 +481,8 @@ function EvolutionLayout({
                 )}
                 style={{ transitionDelay: isActive ? `${400 + i * 120}ms` : "0ms" }}
               >
-                <div className="w-0.5 h-4 bg-brutal-black/40 ml-6" />
-                <span className="font-heading text-lg ml-2 -mt-1">↓</span>
+                <div className="w-0.5 h-2 bg-brutal-black/40 ml-6" />
+                <span className="font-heading text-sm ml-2 -mt-0.5">↓</span>
               </div>
             )}
           </div>

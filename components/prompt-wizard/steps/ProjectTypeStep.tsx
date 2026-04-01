@@ -15,9 +15,12 @@ const colors = ["yellow", "pink", "blue", "green", "purple", "orange"] as const;
 export function ProjectTypeStep({ state, setState }: StepProps) {
   return (
     <div>
-      <h2 className="font-heading text-2xl font-bold mb-6">
-        What are you building?
+      <h2 className="font-heading text-2xl font-bold mb-2">
+        What do you want to build?
       </h2>
+      <p className="text-sm mb-6 text-brutal-black/60">
+        Pick the one that best describes your idea.
+      </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {projectTypes.map((type, i) => (
           <BrutalCard
@@ -32,12 +35,15 @@ export function ProjectTypeStep({ state, setState }: StepProps) {
               setState((s) => ({
                 ...s,
                 projectType: type.id,
-                techStack: [],
+                capabilities: [],
               }))
             }
           >
             <div className="text-3xl mb-2">{type.icon}</div>
             <h3 className="font-heading font-bold text-lg">{type.label}</h3>
+            {type.description && (
+              <p className="text-xs text-brutal-black/60 mt-1">{type.description}</p>
+            )}
           </BrutalCard>
         ))}
       </div>

@@ -16,8 +16,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Vibecoding Workshop",
-  description: "Learn vibecoding with Claude Code — a hands-on workshop",
+  title: "Vibe Coding Workshop",
+  description: "Learn Vibe Coding with Claude Code — a hands-on workshop",
 };
 
 export default function RootLayout({
